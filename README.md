@@ -75,6 +75,12 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./tools/dist_test_final.sh \
 --options "jsonfile_prefix=./work_dirs/out" > ./work_dirs/out-test.out & 
 ```
 
+## 4. Challenge's final checkpoints
+It can be downloaded from Baidu Cloud Disk: https://pan.baidu.com/s/1scW9Z-PjZbrqi3VL7SNJ5w 
+Extraction code：tc77
+
+It can be directly used for model reasoning and get final result.
+
 ### Acknowledgment
 
 * Thanks to [timm](https://github.com/rwightman/pytorch-image-models) for Pytorch implementation.
