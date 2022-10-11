@@ -68,7 +68,8 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./tools/dist_train.sh  \
 ## 3. Evaluation
 Single machine eight card parallel evaluation.
 ```
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./tools/dist_test_final.sh \ ./config/cascade_rcnn_r50_fpn_1x_coco_backbone_convnextLarge_OnlyAdamW_cos_colorjitter_softmax_corrupt.py \ 
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./tools/dist_test_final.sh \
+./config/cascade_rcnn_r50_fpn_1x_coco_backbone_convnextLarge_OnlyAdamW_cos_colorjitter_softmax_corrupt.py \ 
 ./work_dirs/epoch_15.pth 8 \
 --format-only \ 
 --options "jsonfile_prefix=./work_dirs/out" > ./work_dirs/out-test.out & 
