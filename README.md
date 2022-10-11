@@ -19,7 +19,7 @@ In the classification track, we use only the OOD detection data and labels:
 - [x] macOS (CPU only)
 
 ## 2. Train
-- [x] Single GPU Training
+- [ ] Single GPU Training
 - [x] DataParallel (single machine multi-gpus)
 - [ ] DistributedDataParallel
 
@@ -41,24 +41,25 @@ train data and test data structure:
 │   └── occlusion
 ```
 The structure flow of the generated file is as follows：
-####2.1.1 move picture
+#### 2.1.1 move picture
 Put the training set image "ROBINv1.1-det" in
-'''
+```
 ./data/train/Images/ 
-'''
+```
 Put the test set picture "phase2-det" in
-'''
+```
 ./data/test/Images/
-'''
-####2.1.2 check picture
+```
+#### 2.1.2 check picture
 Since the given dataset contains gif images, we need to convert gif images into jpg images. We take the first frame of gif images as jpg images, and the generated jpg images automatically replace the original gif images.
-'''
+```
 python ./tools/check_gif.py  ./data/test/Images
-'''
+```
 ### 2.2. run.
 Training with a single eight card.
 ```
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./tools/dist_train.sh  \ ./config/cascade_rcnn_r50_fpn_1x_coco_backbone_convnextLarge_OnlyAdamW_cos_colorjitter_softmax_corrupt.py 8 \
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./tools/dist_train.sh  \
+./config/cascade_rcnn_r50_fpn_1x_coco_backbone_convnextLarge_OnlyAdamW_cos_colorjitter_softmax_corrupt.py 8 \
 --seed 0 \ 
 --deterministic \ 
 --work-dir ./work_dirs/  
@@ -67,7 +68,8 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./tools/dist_train.sh  \ ./config/cascade_r
 ## 3. Evaluation
 Single machine eight card parallel evaluation.
 ```
-CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./tools/dist_test_final.sh \ ./config/cascade_rcnn_r50_fpn_1x_coco_backbone_convnextLarge_OnlyAdamW_cos_colorjitter_softmax_corrupt.py \ ./work_dirs/epoch_15.pth 8 \
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./tools/dist_test_final.sh \ ./config/cascade_rcnn_r50_fpn_1x_coco_backbone_convnextLarge_OnlyAdamW_cos_colorjitter_softmax_corrupt.py \ 
+./work_dirs/epoch_15.pth 8 \
 --format-only \ 
 --options "jsonfile_prefix=./work_dirs/out" > ./work_dirs/out-test.out & 
 ```
