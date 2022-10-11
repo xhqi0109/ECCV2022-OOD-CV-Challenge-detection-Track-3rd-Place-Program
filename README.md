@@ -56,7 +56,7 @@ Since the given dataset contains gif images, we need to convert gif images into 
 python ./tools/check_gif.py  ./data/test/Images
 ```
 ### 2.2. run.
-Training with a single eight card.
+
 ```
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./tools/dist_train.sh  \
 ./config/cascade_rcnn_r50_fpn_1x_coco_backbone_convnextLarge_OnlyAdamW_cos_colorjitter_softmax_corrupt.py 8 \
@@ -66,7 +66,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./tools/dist_train.sh  \
 ```
 
 ## 3. Evaluation
-Single machine eight card parallel evaluation.
+
 ```
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./tools/dist_test_final.sh \
 ./config/cascade_rcnn_r50_fpn_1x_coco_backbone_convnextLarge_OnlyAdamW_cos_colorjitter_softmax_corrupt.py \ 
